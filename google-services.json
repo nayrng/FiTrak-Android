@@ -15,14 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "726515802939-rapug0foij7ucpv61fd3diqqhbu44fav.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.rng13.fittrak",
-            "certificate_hash": "e70648905690d0045ea3db4210f05f3cecc8c549"
-          }
-        },
-        {
           "client_id": "726515802939-bd0ok75ou2cvtdgtkk5n257kfpc9bh8a.apps.googleusercontent.com",
           "client_type": 3
         }
