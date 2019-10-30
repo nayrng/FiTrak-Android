@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "726515802939",
+    "firebase_url": "https://fitrak-a97c2.firebaseio.com",
+    "project_id": "fitrak-a97c2",
+    "storage_bucket": "fitrak-a97c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726515802939:android:5f9a54006fc941096a4d1e",
+        "android_client_info": {
+          "package_name": "com.rng13.fittrak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "726515802939-bd0ok75ou2cvtdgtkk5n257kfpc9bh8a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMsii-KxeXRk2QtSesqLhV6NbCQ2y2JDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "726515802939-bd0ok75ou2cvtdgtkk5n257kfpc9bh8a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
