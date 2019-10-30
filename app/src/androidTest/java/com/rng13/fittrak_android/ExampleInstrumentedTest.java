@@ -1,4 +1,4 @@
-package com.rng13.fittrak;
+package com.rng13.fittrak_android;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.rng13.fittrak", appContext.getPackageName());
+        assertEquals("com.rng13.fittrak_android", appContext.getPackageName());
     }
 }

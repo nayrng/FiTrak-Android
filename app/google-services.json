@@ -8,17 +8,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:726515802939:android:5f9a54006fc941096a4d1e",
+        "mobilesdk_app_id": "1:726515802939:android:dae4b6e6adaddab36a4d1e",
         "android_client_info": {
-          "package_name": "com.rng13.fittrak"
+          "package_name": "com.rng13.fittrak_android"
         }
       },
       "oauth_client": [
         {
-          "client_id": "726515802939-rapug0foij7ucpv61fd3diqqhbu44fav.apps.googleusercontent.com",
+          "client_id": "726515802939-3cric8j7hpputbce0rntlrbpussg2lps.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.rng13.fittrak",
+            "package_name": "com.rng13.fittrak_android",
             "certificate_hash": "e70648905690d0045ea3db4210f05f3cecc8c549"
           }
         },

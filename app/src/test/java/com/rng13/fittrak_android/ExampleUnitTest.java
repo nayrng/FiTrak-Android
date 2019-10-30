@@ -1,4 +1,4 @@
-package com.rng13.fittrak;
+package com.rng13.fittrak_android;
 
 import org.junit.Test;
 
