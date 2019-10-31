@@ -3,6 +3,7 @@ package com.rng13.fittrak_android;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -73,6 +74,13 @@ public class LandingPage extends AppCompatActivity {
             }
         };
         db.addListenerForSingleValueEvent(listener);
+        view_available_trainers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), View_Trainers.class);
+                startActivity(intent);
+            }
+        });
         //System.out.println(client.EMAIL);
 
     }
