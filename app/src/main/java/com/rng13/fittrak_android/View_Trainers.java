@@ -76,6 +76,16 @@ public class View_Trainers extends AppCompatActivity {
                     public void onItemClick(int position) {
                         // todo: trainer profiles
                         System.out.println(trainer_list.get(position).USERNAME);
+                        TRAINER_OBJ trainer = trainer_list.get(position);
+                        Intent intent = new Intent(getApplicationContext(), Trainer_Details.class);
+                        intent.putExtra("trainer_fname", trainer.FIRST_NAME);
+                        intent.putExtra("trainer_lname", trainer.LAST_NAME);
+                        intent.putExtra("trainer_age", trainer.AGE);
+                        intent.putExtra("trainer_exp", trainer.EXPERIENCE);
+                        intent.putExtra("trainer_email", trainer.EMAIL);
+                        intent.putExtra("trainer_about", trainer.ABOUT_ME);
+                        startActivity(intent);
+
                     }
                 });
             }
