@@ -32,6 +32,8 @@ public class View_Trainers extends AppCompatActivity {
 
     ArrayList<TRAINER_OBJ> trainer_list;
 
+    String USER_NAME;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,10 @@ public class View_Trainers extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         trainer_list = new ArrayList<>();
+
+        USER_NAME = getIntent().getStringExtra("USER_NAME");
+
+        System.out.println("YEET " + USER_NAME);
 
 
         db.addValueEventListener(new ValueEventListener() {
@@ -78,12 +84,15 @@ public class View_Trainers extends AppCompatActivity {
                         System.out.println(trainer_list.get(position).USERNAME);
                         TRAINER_OBJ trainer = trainer_list.get(position);
                         Intent intent = new Intent(getApplicationContext(), Trainer_Details.class);
+                        intent.putExtra("trainer_uname", trainer_list.get(position).USERNAME);
+                        intent.putExtra("trainer_gender", trainer.GENDER);
                         intent.putExtra("trainer_fname", trainer.FIRST_NAME);
                         intent.putExtra("trainer_lname", trainer.LAST_NAME);
                         intent.putExtra("trainer_age", trainer.AGE);
                         intent.putExtra("trainer_exp", trainer.EXPERIENCE);
                         intent.putExtra("trainer_email", trainer.EMAIL);
                         intent.putExtra("trainer_about", trainer.ABOUT_ME);
+                        intent.putExtra("USER_NAME", USER_NAME);
                         startActivity(intent);
 
                     }

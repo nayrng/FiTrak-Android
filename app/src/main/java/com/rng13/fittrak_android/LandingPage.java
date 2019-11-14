@@ -35,6 +35,8 @@ public class LandingPage extends AppCompatActivity {
     Button view_trainer_prof;
     Button view_available_trainers;
 
+    String USER_NAME;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +50,6 @@ public class LandingPage extends AppCompatActivity {
         view_trainer_prof = (Button) findViewById(R.id.view_trainer_button);
         view_available_trainers = (Button) findViewById(R.id.view_available_trainers_button);
 
-
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -58,9 +59,12 @@ public class LandingPage extends AppCompatActivity {
                     if (user.getUid().equals(uid)) {
 //                        System.out.println(snapshot.child("EMAIL").getValue(String.class));
                         welcome.setText("Welcome,\n" + snapshot.child("FIRST_NAME").getValue(String.class));
+                        USER_NAME = snapshot.child("USER_NAME").getValue(String.class);
                         if ((snapshot.child("TRAINER_USERNAME").getValue(String.class)).equals("NO_TRAINER")) {
                             System.out.println("FUCK YES");
                             view_trainer_prof.setVisibility(View.GONE);
+                        } else {
+                            view_available_trainers.setVisibility(View.GONE);
                         }
                         System.out.println(snapshot.child("TRAINER_ID").getValue(String.class));
                     }
@@ -78,6 +82,7 @@ public class LandingPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), View_Trainers.class);
+                intent.putExtra("USER_NAME",USER_NAME);
                 startActivity(intent);
             }
         });
