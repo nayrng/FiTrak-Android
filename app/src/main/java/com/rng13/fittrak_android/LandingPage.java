@@ -56,6 +56,7 @@ public class LandingPage extends AppCompatActivity {
 
         view_trainer_prof = (Button) findViewById(R.id.view_trainer_button);
         view_available_trainers = (Button) findViewById(R.id.view_available_trainers_button);
+        view_appts = (Button) findViewById(R.id.view_appt_button);
 
         ValueEventListener listener = new ValueEventListener() {
             @Override
@@ -101,7 +102,10 @@ public class LandingPage extends AppCompatActivity {
         view_appts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(), View_Workouts.class);
+                intent.putExtra("USER_NAME", USER_EMAIL);
+                intent.putExtra("trainer_uname", trainer_uname);
+                startActivity(intent);
             }
         });
 

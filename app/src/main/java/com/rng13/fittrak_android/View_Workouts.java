@@ -1,0 +1,115 @@
+package com.rng13.fittrak_android;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Bundle;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Map;
+
+public class View_Workouts extends AppCompatActivity {
+
+    FirebaseAuth mAuth;
+    DatabaseReference db;
+
+    FirebaseUser user;
+
+    public RecyclerView.Adapter mAdapter;
+    public RecyclerView mRecyclerView;
+    public RecyclerView.LayoutManager mLayoutManager;
+
+    ArrayList<WORKOUT_OBJ> workout_list;
+
+    String USER_NAME;
+    String TRAINER_NAME;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_view__workouts);
+
+        USER_NAME = getIntent().getStringExtra("USER_NAME");
+        TRAINER_NAME = getIntent().getStringExtra("trainer_uname");
+
+        user = mAuth.getInstance().getCurrentUser();
+        db = FirebaseDatabase.getInstance().getReference().child("TRAINERS").child(TRAINER_NAME).child("workouts");
+
+        mRecyclerView = findViewById(R.id.workouts_recycler);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        workout_list = new ArrayList<>();
+
+
+
+        System.out.println(USER_NAME);
+        System.out.println(TRAINER_NAME);
+
+        db.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                workout_list.clear();
+                for (DataSnapshot snap: dataSnapshot.getChildren()) {
+                    if (snap.getKey().equals(USER_NAME.split("\\@")[0])) {
+                        //System.out.println(snap.getValue());
+                        //workout_list = (ArrayList<WORKOUT_OBJ>) snap.getValue();
+                        for (int i=0; i<snap.getChildrenCount(); i++) {
+                            DataSnapshot actual_workout = snap.child(Integer.toString(i));
+                            String workout_client = actual_workout.child("workout_client").getValue(String.class);
+                            System.out.println("WORKOUT CLIENT " + workout_client);
+                            String workout_day = actual_workout.child("workout_day").getValue(String.class);
+                            String workout_details = actual_workout.child("workout_details").getValue(String.class);
+                            String workout_title = actual_workout.child("workout_title").getValue(String.class);
+                            String workout_trainer = actual_workout.child("workout_trainer").getValue(String.class);
+                            WORKOUT_OBJ obj = new WORKOUT_OBJ(workout_title, workout_trainer, workout_client, workout_day, workout_details);
+                            workout_list.add(obj);
+
+                        }
+                    }
+                }
+                for (int i=0; i<workout_list.size(); i++) {
+                    System.out.println(workout_list.isEmpty());
+                    System.out.println(workout_list.get(i).WORKOUT_TRAINER);
+                }
+                System.out.println("WORKOUT LIST SIZE IS " + workout_list.size());
+
+                mAdapter = new View_Workout_Adapter(workout_list);
+                mRecyclerView.setAdapter(mAdapter);
+                mRecyclerView.addItemDecoration(new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
+                ((View_Workout_Adapter) mAdapter).setOnItemClickListener(new View_Workout_Adapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(int position) {
+                        System.out.println(workout_list.get(position).WORKOUT_TRAINER);
+                        WORKOUT_OBJ obj = workout_list.get(position);
+                    }
+                });
+
+
+            }
+
+            //                    trainer_client_list.add(0, client_name.split("\\@")[0]);
+            //                    update_clients(trainer_client_list, trainer.USERNAME, client_name.split("\\@")[0]);
+            //                }
+            //            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+}
