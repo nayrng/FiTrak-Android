@@ -35,10 +35,19 @@ public class Trainer_Details extends AppCompatActivity {
     String about;
     String gender;
 
+    //Boolean has_trainer = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainer__details);
+
+        Bundle bundle = getIntent().getExtras();
+
+
+        Boolean has_trainer = getIntent().getBooleanExtra("DO_I_HAVE_TRAINER", false);
+
+        System.out.println("DO I HAVE A TRAINER? " + has_trainer);
 
         trainer_client_list = new ArrayList<>();
 
@@ -70,17 +79,24 @@ public class Trainer_Details extends AppCompatActivity {
         trainer_bio.setText(about);
 
         Button signup = findViewById(R.id.trainer_join);
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TRAINER_OBJ trainer = new TRAINER_OBJ(TRAINER_USER_NAME, email, f_name, l_name, age, exp, gender, about);
-                join_trainer(trainer, CLIENT_USER_NAME);
+        if (has_trainer) {
+            signup.setVisibility(View.GONE);
+        } else {
+            signup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    TRAINER_OBJ trainer = new TRAINER_OBJ(TRAINER_USER_NAME, email, f_name, l_name, age, exp, gender, about);
+                    join_trainer(trainer, CLIENT_USER_NAME);
 
-                Intent intent = new Intent(getApplicationContext(), LandingPage.class);
-                intent.putExtra("HAS_TRAINER", true);
-                startActivity(intent);
-            }
-        });
+                    Intent intent = new Intent(getApplicationContext(), LandingPage.class);
+                    intent.putExtra("HAS_TRAINER", true);
+                    startActivity(intent);
+                }
+            });
+        }
+
+
+
 
     }
 
@@ -101,8 +117,8 @@ public class Trainer_Details extends AppCompatActivity {
                 System.out.println(dataSnapshot.child("about_me").getValue());
                 System.out.println(dataSnapshot.child("clients").child("0").getValue());
                 if (dataSnapshot.child("clients").child("0").getValue().equals("placeholder")) {
-                    trainer_client_list.add(0, client_name);
-                    update_clients(trainer_client_list, trainer.USERNAME, client_name);
+                    trainer_client_list.add(0, client_name.split("\\@")[0]);
+                    update_clients(trainer_client_list, trainer.USERNAME, client_name.split("\\@")[0]);
                 }
             }
 

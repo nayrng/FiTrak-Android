@@ -93,6 +93,7 @@ public class View_Trainers extends AppCompatActivity {
                         intent.putExtra("trainer_email", trainer.EMAIL);
                         intent.putExtra("trainer_about", trainer.ABOUT_ME);
                         intent.putExtra("USER_NAME", USER_NAME);
+                        //intent.putExtra("DO_I_HAVE_TRAINER", true);
                         startActivity(intent);
 
                     }

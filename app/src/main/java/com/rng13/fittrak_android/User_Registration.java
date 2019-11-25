@@ -90,7 +90,8 @@ public class User_Registration extends AppCompatActivity {
                             System.out.println(user);
                             workouts.add(0, "placeholder");
                             appts.add(0, "placeholder");
-                            CLIENT_OBJ client = new CLIENT_OBJ(USERNAME, mAuth.getUid(), EMAIL, F_NAME, L_NAME, "NO_TRAINER", workouts, appts);
+                            //CLIENT_OBJ client = new CLIENT_OBJ(USERNAME, mAuth.getUid(), EMAIL, F_NAME, L_NAME, "NO_TRAINER", workouts, appts);
+                            CLIENT_OBJ client = new CLIENT_OBJ(mAuth.getUid(), EMAIL, F_NAME, L_NAME, "NO_TRAINER", workouts, appts);
 //                            CLIENT_OBJ client = new CLIENT_OBJ(mAuth.getUid(),
 //                                    EMAIL, F_NAME, L_NAME, "no trainer", workouts, appts);
                             create_db_entry(client);
@@ -108,6 +109,7 @@ public class User_Registration extends AppCompatActivity {
     }
 
     private void create_db_entry(CLIENT_OBJ client) {
-        db.child("CLIENTS").child(USERNAME).setValue(client);
+        String email_parsed = EMAIL.split("\\@")[0];
+        db.child("CLIENTS").child(email_parsed).setValue(client);
     }
 }
