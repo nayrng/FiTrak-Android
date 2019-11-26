@@ -31,12 +31,14 @@ public class User_Registration extends AppCompatActivity {
     public String F_NAME;
     public String L_NAME;
     public String USERNAME;
+    public String INTERESTS;
 
     EditText reg_email;
     EditText reg_password;
     EditText reg_fname;
     EditText reg_lname;
     EditText reg_username;
+    EditText reg_interests;
     ArrayList<String> workouts;
     ArrayList<String> appts;
 
@@ -57,6 +59,8 @@ public class User_Registration extends AppCompatActivity {
 
         reg_username = (EditText) findViewById(R.id.reg_username);
 
+        reg_interests = (EditText) findViewById(R.id.reg_interests);
+
         workouts = new ArrayList<>();
         appts = new ArrayList<>();
 
@@ -69,6 +73,8 @@ public class User_Registration extends AppCompatActivity {
                 F_NAME = reg_fname.getText().toString();
                 L_NAME = reg_lname.getText().toString();
                 USERNAME = reg_username.getText().toString();
+
+                INTERESTS = reg_interests.getText().toString();
 
                 System.out.println(EMAIL);
                 Log.d("HELLO", EMAIL);
@@ -91,7 +97,8 @@ public class User_Registration extends AppCompatActivity {
                             workouts.add(0, "placeholder");
                             appts.add(0, "placeholder");
                             //CLIENT_OBJ client = new CLIENT_OBJ(USERNAME, mAuth.getUid(), EMAIL, F_NAME, L_NAME, "NO_TRAINER", workouts, appts);
-                            CLIENT_OBJ client = new CLIENT_OBJ(mAuth.getUid(), EMAIL, F_NAME, L_NAME, "NO_TRAINER", workouts, appts);
+                            //CLIENT_OBJ client = new CLIENT_OBJ(mAuth.getUid(), EMAIL, F_NAME, L_NAME, "NO_TRAINER", workouts, appts);
+                            CLIENT_OBJ client = new CLIENT_OBJ(mAuth.getUid(), EMAIL, F_NAME, L_NAME, "NO_TRAINER", INTERESTS);
 //                            CLIENT_OBJ client = new CLIENT_OBJ(mAuth.getUid(),
 //                                    EMAIL, F_NAME, L_NAME, "no trainer", workouts, appts);
                             create_db_entry(client);

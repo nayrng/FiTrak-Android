@@ -13,6 +13,8 @@ public class CLIENT_OBJ {
     ArrayList<String> WORKOUTS;
     ArrayList<String> APPOINTMENTS;
 
+    String INTERESTS;
+
     public CLIENT_OBJ(){}
 //    public CLIENT_OBJ(String username, String uid, String email, String fname, String lname, String tid, ArrayList<String> workout, ArrayList<String> appts) {
 //        this.USER_NAME = username;
@@ -33,5 +35,14 @@ public class CLIENT_OBJ {
         this.TRAINER_USERNAME = tid;
         this.WORKOUTS = workout;
         this.APPOINTMENTS = appts;
+    }
+
+    public CLIENT_OBJ(String uid, String email, String fname, String lname, String tid, String interests) {
+        this.USER_ID = uid;
+        this.EMAIL = email;
+        this.FIRST_NAME = fname;
+        this.LAST_NAME = lname;
+        this.TRAINER_USERNAME = tid;
+        this.INTERESTS = interests;
     }
 }

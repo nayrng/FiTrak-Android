@@ -18,4 +18,10 @@ public class WORKOUT_OBJ {
         this.WORKOUT_DETAILS = details;
     }
 
+    public WORKOUT_OBJ(String title, String desc, String trainer) {
+        this.WORKOUT_TITLE = title;
+        this.WORKOUT_DETAILS = desc;
+        this.WORKOUT_TRAINER = trainer;
+    }
+
 }
