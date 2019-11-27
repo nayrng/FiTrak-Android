@@ -43,6 +43,7 @@
             <TextView
                 android:id="@+id/workout_somedetails"
                 android:layout_width="239dp"
+                android:textColor="#FDFDFD"
                 android:layout_height="43dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"

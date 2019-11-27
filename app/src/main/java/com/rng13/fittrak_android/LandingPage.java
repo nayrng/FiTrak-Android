@@ -111,6 +111,15 @@ public class LandingPage extends AppCompatActivity {
             }
         });
 
+        view_appts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), View_Appointments.class);
+                intent.putExtra("username", USER_EMAIL.split("\\@")[0]);
+                startActivity(intent);
+            }
+        });
+
         view_trainer_prof.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

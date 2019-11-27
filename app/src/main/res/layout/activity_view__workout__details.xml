@@ -4,32 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View_Workouts">
+    tools:context=".View_Workout_Details">
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/view_workout_details_title"
+        android:layout_width="287dp"
+        android:layout_height="121dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="96dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="My Workouts"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/workouts_recycler"
+        android:textAlignment="center"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/workouts_recycler"
-        android:layout_width="393dp"
-        android:layout_height="508dp"
+    <TextView
+        android:id="@+id/view_workout_details_description"
+        android:layout_width="365dp"
+        android:layout_height="290dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:textAlignment="center"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_workout_details_title"
+        app:layout_constraintVertical_bias="0.281" />
 </androidx.constraintlayout.widget.ConstraintLayout>
