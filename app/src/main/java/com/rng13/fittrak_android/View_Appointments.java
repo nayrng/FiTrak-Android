@@ -2,6 +2,7 @@ package com.rng13.fittrak_android;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +26,7 @@ public class View_Appointments extends AppCompatActivity {
     public RecyclerView mRecyclerView;
     public RecyclerView.LayoutManager mLayoutManager;
 
-    ArrayList<String> appt_list;
+    ArrayList<APPOINTMENT_OBJ> appt_list;
 
     String USER_NAME;
     String TRAINER_NAME;
@@ -40,7 +41,8 @@ public class View_Appointments extends AppCompatActivity {
         USER_NAME = getIntent().getStringExtra("username");
         TRAINER_NAME = getIntent().getStringExtra("trainer_uname");
 
-        db = FirebaseDatabase.getInstance().getReference().child("APPOINTMENTS");
+        //db = FirebaseDatabase.getInstance().getReference().child("APPOINTMENTS");
+        db = FirebaseDatabase.getInstance().getReference().child("APPTS");
 
         mRecyclerView = findViewById(R.id.View_Appointments_RecyclerView);
         mLayoutManager = new LinearLayoutManager(this);
@@ -53,10 +55,25 @@ public class View_Appointments extends AppCompatActivity {
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                    if (snap.getValue(String.class).equals(USER_NAME)) {
-                        appt_list.add(snap.getKey());
+//                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+//                    if (snap.getValue(String.class).equals(USER_NAME)) {
+//                        appt_list.add(snap.getKey());
+//                    }
+//                }
+
+                for (DataSnapshot snap: dataSnapshot.getChildren()) {
+                    System.out.println("APPT KEY " + snap.getKey());
+                    if (snap.getKey().equals(USER_NAME)) {
+
+                        for (DataSnapshot snapshot : snap.getChildren()) {
+                            appt_list.add(new APPOINTMENT_OBJ(snapshot.child("appt_date").getValue(String.class), snapshot.child("appt_time").getValue(String.class)));
+                        }
+
                     }
+//                    if (snap.getKey().equals(USER_NAME)) {
+//                        APPOINTMENT_OBJ obj = snap.getValue(APPOINTMENT_OBJ.class);
+//                        appt_list.add(obj);
+//                    }
                 }
 
                 if (appt_list.isEmpty()) {
@@ -68,6 +85,7 @@ public class View_Appointments extends AppCompatActivity {
                 }
                 mAdapter = new View_Appointments_Adapter(appt_list);
                 mRecyclerView.setAdapter(mAdapter);
+                mRecyclerView.addItemDecoration(new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
 
             }
 

@@ -16,13 +16,14 @@ import java.util.ArrayList;
 
 public class View_Appointments_Adapter extends RecyclerView.Adapter<View_Appointments_Adapter.MyViewHolder> {
 
-    private ArrayList<String> DATASET;
+//    private ArrayList<String> DATASET;
+    private ArrayList<APPOINTMENT_OBJ> DATASET;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseUser user = firebaseAuth.getCurrentUser();
     private Context ctx;
     public OnItemClickListener mListener;
 
-    public View_Appointments_Adapter(ArrayList<String> appts) {
+    public View_Appointments_Adapter(ArrayList<APPOINTMENT_OBJ> appts) {
         DATASET = appts;
     }
 
@@ -50,9 +51,9 @@ public class View_Appointments_Adapter extends RecyclerView.Adapter<View_Appoint
 
     @Override
     public void onBindViewHolder(MyViewHolder myViewHolder, int i) {
-        String appt = DATASET.get(i);
+        APPOINTMENT_OBJ appt = DATASET.get(i);
         myViewHolder.appt.setId(i);
-        myViewHolder.appt.setText(appt);
+        myViewHolder.appt.setText(appt.appt_date + "\n" + appt.appt_time);
     }
 
     @Override
