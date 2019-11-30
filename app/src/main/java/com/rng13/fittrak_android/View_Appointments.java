@@ -66,7 +66,7 @@ public class View_Appointments extends AppCompatActivity {
                     if (snap.getKey().equals(USER_NAME)) {
 
                         for (DataSnapshot snapshot : snap.getChildren()) {
-                            appt_list.add(new APPOINTMENT_OBJ(snapshot.child("appt_date").getValue(String.class), snapshot.child("appt_time").getValue(String.class)));
+                            appt_list.add(new APPOINTMENT_OBJ(snapshot.getKey(), snapshot.getValue(String.class)));
                         }
 
                     }
