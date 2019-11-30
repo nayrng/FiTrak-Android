@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000"
     tools:context=".View_Appointments">
 
     <TextView
@@ -16,6 +17,7 @@
         android:layout_marginBottom="8dp"
         android:textAlignment="center"
         android:textSize="36sp"
+        android:textColor="#fff"
         app:layout_constraintBottom_toTopOf="@+id/View_Appointments_RecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

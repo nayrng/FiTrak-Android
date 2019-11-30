@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#000"
     android:layout_height="match_parent"
     tools:context=".LandingPage">
 
@@ -11,9 +12,11 @@
         android:layout_width="303dp"
         android:layout_height="106dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="8dp"
+        android:text="Welcome To FitTrak, Username!"
         android:textAlignment="center"
+        android:textColor="#ffff"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,22 +27,28 @@
         android:layout_width="150dp"
         android:layout_height="84dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="8dp"
+        android:background="@color/colorPrimary"
         android:text="View Appointments"
+        android:textAlignment="center"
+        android:textColor="#ffff"
         app:layout_constraintEnd_toStartOf="@+id/view_workout_button"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_message" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <Button
         android:id="@+id/view_workout_button"
         android:layout_width="167dp"
         android:layout_height="84dp"
-        android:layout_marginTop="152dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="28dp"
+        android:background="@color/colorPrimary"
         android:text="View Workout Assignments"
+        android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_message" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <Button
         android:id="@+id/view_trainer_button"
@@ -50,6 +59,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="View Trainer's Profile"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,11 +76,25 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="View Available Trainers"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_appt_button"
         app:layout_constraintVertical_bias="0.326" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="319dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_message"
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

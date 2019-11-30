@@ -17,6 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Trainer_Details extends AppCompatActivity {
 
@@ -34,6 +36,8 @@ public class Trainer_Details extends AppCompatActivity {
     String email;
     String about;
     String gender;
+
+    Boolean has_clients = false;
 
     //Boolean has_trainer = false;
 
@@ -94,30 +98,29 @@ public class Trainer_Details extends AppCompatActivity {
                 }
             });
         }
-
-
-
-
     }
 
     private void join_trainer(final TRAINER_OBJ trainer, final String client_name) {
-//        if (db.child(trainer.USERNAME).child("clients").getKey().equals("0")) {
-//            System.out.println("yessir");
-//        }
         System.out.println(trainer.USERNAME);
         System.out.println("INSIDE JOIN TRAINER " + client_name);
-        int i = 0;
-//        while (!db.child(trainer.USERNAME).child("clients").child(String.valueOf(i)).equals(null)) {
-//
-//        }
-        DatabaseReference client_list_ref = db.child("TRAINERS").child(trainer.USERNAME);
-        client_list_ref.addValueEventListener(new ValueEventListener() {
+        final DatabaseReference client_list_ref = db.child("TRAINERS").child(trainer.USERNAME);
+
+
+
+        final ArrayList<String> trainer_client_list = new ArrayList<>();
+
+        client_list_ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                System.out.println(dataSnapshot.child("about_me").getValue());
-                System.out.println(dataSnapshot.child("clients").child("0").getValue());
-                if (dataSnapshot.child("clients").child("0").getValue().equals("placeholder")) {
-                    trainer_client_list.add(0, client_name.split("\\@")[0]);
+                if (!dataSnapshot.hasChild("clients")) {
+                    trainer_client_list.add(client_name.split("\\@")[0]);
+                    update_clients(trainer_client_list, trainer.USERNAME, client_name.split("\\@")[0]);
+                }
+                else if (dataSnapshot.hasChild("clients")) {
+                    for (DataSnapshot snap: dataSnapshot.child("clients").getChildren()) {
+                        trainer_client_list.add(snap.getValue(String.class));
+                    }
+                    trainer_client_list.add(client_name.split("\\@")[0]);
                     update_clients(trainer_client_list, trainer.USERNAME, client_name.split("\\@")[0]);
                 }
             }
@@ -127,6 +130,7 @@ public class Trainer_Details extends AppCompatActivity {
 
             }
         });
+
     }
 
     private void update_clients(ArrayList<String> client_list, String trainer, String client) {

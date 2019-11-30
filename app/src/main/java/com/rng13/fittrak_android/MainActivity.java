@@ -68,14 +68,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button debug_button_main = (Button) findViewById(R.id.DEBUG_REG);
-        debug_button_main.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LandingPage.class);
-                startActivity(intent);
-            }
-        });
 
         Button registration = (Button) findViewById(R.id.Register);
         registration.setOnClickListener(new View.OnClickListener() {
