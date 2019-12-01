@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -106,6 +107,10 @@ public class View_Workouts extends AppCompatActivity {
                     System.out.println(workout_list.get(i).WORKOUT_TITLE);
                 }
                 System.out.println("WORKOUT LIST SIZE IS " + workout_list.size());
+
+                if (workout_list.isEmpty()) {
+                    findViewById(R.id.no_workouts).setVisibility(View.VISIBLE);
+                }
 
                 mAdapter = new View_Workout_Adapter(workout_list);
                 mRecyclerView.setAdapter(mAdapter);

@@ -94,8 +94,8 @@ public class User_Registration extends AppCompatActivity {
                             Log.d("YEET", "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             System.out.println(user);
-                            workouts.add(0, "placeholder");
-                            appts.add(0, "placeholder");
+//                            workouts.add(0, "placeholder");
+//                            appts.add(0, "placeholder");
                             //CLIENT_OBJ client = new CLIENT_OBJ(USERNAME, mAuth.getUid(), EMAIL, F_NAME, L_NAME, "NO_TRAINER", workouts, appts);
                             //CLIENT_OBJ client = new CLIENT_OBJ(mAuth.getUid(), EMAIL, F_NAME, L_NAME, "NO_TRAINER", workouts, appts);
                             CLIENT_OBJ client = new CLIENT_OBJ(mAuth.getUid(), EMAIL, F_NAME, L_NAME, "NO_TRAINER", INTERESTS);
