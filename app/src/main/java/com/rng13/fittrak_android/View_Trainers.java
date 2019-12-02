@@ -63,8 +63,9 @@ public class View_Trainers extends AppCompatActivity {
                     String EMAIL = snap.child("email").getValue(String.class);
                     String F_NAME = snap.child("first_name").getValue(String.class);
                     String L_NAME = snap.child("last_name").getValue(String.class);
-                    int AGE = snap.child("age").getValue(Integer.class);
-                    int EXP = snap.child("experience").getValue(Integer.class);
+                    Long AGE = (Long) snap.child("age").getValue();
+                    //int EXP = snap.child("experience").getValue(Integer.class);
+                    Long EXP = (Long) snap.child("experience").getValue();
                     String GENDER = snap.child("gender").getValue(String.class);
                     String ABOUT_ME = snap.child("about_me").getValue(String.class);
 

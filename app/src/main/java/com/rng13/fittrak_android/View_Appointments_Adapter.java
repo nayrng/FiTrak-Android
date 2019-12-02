@@ -53,7 +53,7 @@ public class View_Appointments_Adapter extends RecyclerView.Adapter<View_Appoint
     public void onBindViewHolder(MyViewHolder myViewHolder, int i) {
         APPOINTMENT_OBJ appt = DATASET.get(i);
         myViewHolder.appt.setId(i);
-        myViewHolder.appt.setText(appt.appt_date + "\n" + appt.appt_time);
+        myViewHolder.appt.setText("Date: " + appt.appt_date + "\n" + "Time: " + appt.appt_time);
     }
 
     @Override

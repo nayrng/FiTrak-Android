@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class View_Appointments extends AppCompatActivity {
 
@@ -60,13 +61,28 @@ public class View_Appointments extends AppCompatActivity {
 //                        appt_list.add(snap.getKey());
 //                    }
 //                }
+                appt_list.clear();
 
                 for (DataSnapshot snap: dataSnapshot.getChildren()) {
                     System.out.println("APPT KEY " + snap.getKey());
                     if (snap.getKey().equals(USER_NAME)) {
 
                         for (DataSnapshot snapshot : snap.getChildren()) {
-                            appt_list.add(new APPOINTMENT_OBJ(snapshot.getKey(), snapshot.getValue(String.class)));
+                            String date = null;
+                            String time = null;
+                            //appt_list.add(new APPOINTMENT_OBJ(snapshot.getKey(), snapshot.getValue(String.class)));
+                            //Map<String, Object> map = (Map<String, Object>) snapshot.getValue();
+//                            System.out.println(map.get());
+                            Map<String, Object> map = (Map<String, Object>) snapshot.getValue();
+                            for(Object val : map.values()) {
+                                System.out.println(val);
+                                time = val.toString();
+                            }
+                            for(String val: map.keySet()) {
+                                System.out.println(val);
+                                date = val;
+                            }
+                            appt_list.add(new APPOINTMENT_OBJ(date, time));
                         }
 
                     }

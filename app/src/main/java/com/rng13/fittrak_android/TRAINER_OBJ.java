@@ -11,15 +11,15 @@ public class TRAINER_OBJ {
     String EMAIL;
     String FIRST_NAME;
     String LAST_NAME;
-    int AGE;
-    int EXPERIENCE;
+    Long AGE;
+    Long EXPERIENCE;
     String GENDER;
     String ABOUT_ME;
     ArrayList<String> CLIENTS;
 
     public TRAINER_OBJ(){};
 
-    public TRAINER_OBJ(String user, String email, String fname, String lname, int age, int exp, String gen, String abt) {
+    public TRAINER_OBJ(String user, String email, String fname, String lname, Long age, Long exp, String gen, String abt) {
         // ------------------
         this.USERNAME = user;
         // ------------------
@@ -32,7 +32,7 @@ public class TRAINER_OBJ {
         this.ABOUT_ME = abt;
     }
 
-    public TRAINER_OBJ(String user, String email, String fname, String lname, int age, int exp, String gen, String abt, ArrayList<String> cl) {
+    public TRAINER_OBJ(String user, String email, String fname, String lname, Long age, Long exp, String gen, String abt, ArrayList<String> cl) {
         // ------------------
         this.USERNAME = user;
         // ------------------

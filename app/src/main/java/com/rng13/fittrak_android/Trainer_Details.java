@@ -31,8 +31,10 @@ public class Trainer_Details extends AppCompatActivity {
 
     String f_name;
     String l_name;
-    int age;
-    int exp;
+    //int age;
+    Long age;
+    //int exp;
+    Long exp;
     String email;
     String about;
     String gender;
@@ -64,8 +66,10 @@ public class Trainer_Details extends AppCompatActivity {
 
         f_name = getIntent().getStringExtra("trainer_fname");
         l_name = getIntent().getStringExtra("trainer_lname");
-        age = getIntent().getIntExtra("trainer_age", 0);
-        exp = getIntent().getIntExtra("trainer_exp", 0);
+        //age = getIntent().getIntExtra("trainer_age", 0);
+        age = getIntent().getLongExtra("trainer_age", 0);
+        //exp = getIntent().getIntExtra("trainer_exp", 0);
+        exp = getIntent().getLongExtra("trainer_exp", 0);
         email = getIntent().getStringExtra("trainer_email");
         about = getIntent().getStringExtra("trainer_about");
 
