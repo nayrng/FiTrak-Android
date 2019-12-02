@@ -134,8 +134,8 @@ public class LandingPage extends AppCompatActivity {
                                 intent.putExtra("trainer_gender", snap.child("gender").getValue(String.class));
                                 intent.putExtra("trainer_fname", snap.child("first_name").getValue(String.class));
                                 intent.putExtra("trainer_lname", snap.child("last_name").getValue(String.class));
-                                intent.putExtra("trainer_age", snap.child("age").getValue(Integer.class));
-                                intent.putExtra("trainer_exp", snap.child("experience").getValue(Integer.class));
+                                intent.putExtra("trainer_age", snap.child("age").getValue(Long.class));
+                                intent.putExtra("trainer_exp", snap.child("experience").getValue(Long.class));
                                 intent.putExtra("trainer_email", snap.child("email").getValue(String.class));
                                 intent.putExtra("trainer_about", snap.child("about_me").getValue(String.class));
                                 intent.putExtra("DO_I_HAVE_TRAINER", true);

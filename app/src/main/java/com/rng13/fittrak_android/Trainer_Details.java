@@ -70,20 +70,23 @@ public class Trainer_Details extends AppCompatActivity {
         age = getIntent().getLongExtra("trainer_age", 0);
         //exp = getIntent().getIntExtra("trainer_exp", 0);
         exp = getIntent().getLongExtra("trainer_exp", 0);
+        gender = getIntent().getStringExtra("trainer_gender");
         email = getIntent().getStringExtra("trainer_email");
         about = getIntent().getStringExtra("trainer_about");
 
-        final TextView trainer_name, trainer_age, trainer_years, trainer_email, trainer_bio;
+        final TextView trainer_name, trainer_age, trainer_years, trainer_email, trainer_gender, trainer_bio;
         trainer_name = findViewById(R.id.trainer_name);
         trainer_age = findViewById(R.id.trainer_age);
         trainer_years = findViewById(R.id.trainer_years);
         trainer_email = findViewById(R.id.trainer_email);
+        trainer_gender = findViewById(R.id.trainer_gender);
         trainer_bio = findViewById(R.id.trainer_bio);
 
         trainer_name.setText(f_name + " " + l_name);
         trainer_age.setText("Age: "+age);
         trainer_years.setText("Years of Experience: " + exp);
         trainer_email.setText(""+email);
+        trainer_gender.setText("Gender: " + gender);
         trainer_bio.setText(about);
 
         Button signup = findViewById(R.id.trainer_join);

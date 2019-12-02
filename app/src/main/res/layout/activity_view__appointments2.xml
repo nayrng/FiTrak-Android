@@ -12,13 +12,11 @@
         android:layout_width="317dp"
         android:layout_height="137dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:textAlignment="center"
-        android:textSize="36sp"
         android:textColor="#fff"
-        app:layout_constraintBottom_toTopOf="@+id/View_Appointments_RecyclerView"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +28,25 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/appointment_details"
+        android:layout_width="371dp"
+        android:layout_height="401dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/View_Appointments_RecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/View_Appts_Title" />
 </androidx.constraintlayout.widget.ConstraintLayout>

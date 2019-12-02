@@ -66,41 +66,32 @@ public class View_Workouts extends AppCompatActivity {
                 workout_list.clear();
                 for (DataSnapshot snap: dataSnapshot.getChildren()) {
                     System.out.println("SNAP " + snap.getValue());
+                    System.out.println(TRAINER_NAME);
 
-                    for (int i=0; i<snap.child("client_names").getChildrenCount(); i++) {
-
-                        System.out.println("PASSED USER IS " + USER_NAME.split("\\@")[0]);
-                        System.out.println("READ USER IS " + snap.child("client_names").child(Integer.toString(i)));
-
-                        if (USER_NAME.split("\\@")[0].equals(snap.child("client_names").child(Integer.toString(i)).getValue(String.class))) {
-                            System.out.println("YEET");
-                            String workout_title = snap.child("name").getValue(String.class);
-                            String workout_details = snap.child("description").getValue(String.class);
-                            String workout_trainer = snap.child("username").getValue(String.class);
-                            WORKOUT_OBJ obj = new WORKOUT_OBJ(workout_title, workout_details, workout_trainer);
-                            workout_list.add(obj);
-                        }
-
-
-                        //System.out.println(snap.child("client_names").child(Integer.toString(i)));
+//                    for (int i=0; i<snap.child("client_names").getChildrenCount(); i++) {
+//
+//                        System.out.println("PASSED USER IS " + USER_NAME.split("\\@")[0]);
+//                        System.out.println("READ USER IS " + snap.child("client_names").child(Integer.toString(i)));
+//
+//                        if (USER_NAME.split("\\@")[0].equals(snap.child("client_names").child(Integer.toString(i)).getValue(String.class))) {
+//                            System.out.println("YEET");
+//                            String workout_title = snap.child("name").getValue(String.class);
+//                            String workout_details = snap.child("description").getValue(String.class);
+//                            String workout_trainer = snap.child("username").getValue(String.class);
+//                            WORKOUT_OBJ obj = new WORKOUT_OBJ(workout_title, workout_details, workout_trainer);
+//                            workout_list.add(obj);
+//                        }
+//
+//
+//                    }
+                    if (snap.child("username").getValue(String.class).equals(TRAINER_NAME)) {
+                        String workout_title = snap.child("name").getValue(String.class);
+                        String workout_details = snap.child("description").getValue(String.class);
+                        String workout_trainer = snap.child("username").getValue(String.class);
+                        WORKOUT_OBJ obj = new WORKOUT_OBJ(workout_title, workout_details, workout_trainer);
+                        workout_list.add(obj);
                     }
 
-//                    if (snap.getKey().equals(USER_NAME.split("\\@")[0])) {
-//                        //System.out.println(snap.getValue());
-//                        //workout_list = (ArrayList<WORKOUT_OBJ>) snap.getValue();
-//                        for (int i=0; i<snap.getChildrenCount(); i++) {
-//                            DataSnapshot actual_workout = snap.child(Integer.toString(i));
-//                            String workout_client = actual_workout.child("workout_client").getValue(String.class);
-//                            System.out.println("WORKOUT CLIENT " + workout_client);
-//                            String workout_day = actual_workout.child("workout_day").getValue(String.class);
-//                            String workout_details = actual_workout.child("workout_details").getValue(String.class);
-//                            String workout_title = actual_workout.child("workout_title").getValue(String.class);
-//                            String workout_trainer = actual_workout.child("workout_trainer").getValue(String.class);
-//                            WORKOUT_OBJ obj = new WORKOUT_OBJ(workout_title, workout_trainer, workout_client, workout_day, workout_details);
-//                            workout_list.add(obj);
-//
-//                        }
-//                    }
                 }
                 for (int i=0; i<workout_list.size(); i++) {
                     System.out.println(workout_list.isEmpty());
