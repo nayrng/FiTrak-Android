@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,9 +49,6 @@ public class Trainer_Details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainer__details);
 
-        Bundle bundle = getIntent().getExtras();
-
-
         Boolean has_trainer = getIntent().getBooleanExtra("DO_I_HAVE_TRAINER", false);
 
         System.out.println("DO I HAVE A TRAINER? " + has_trainer);
@@ -90,8 +88,10 @@ public class Trainer_Details extends AppCompatActivity {
         trainer_bio.setText(about);
 
         Button signup = findViewById(R.id.trainer_join);
+        ImageView people = findViewById(R.id.people);
         if (has_trainer) {
             signup.setVisibility(View.GONE);
+            people.setVisibility(View.VISIBLE);
         } else {
             signup.setOnClickListener(new View.OnClickListener() {
                 @Override
