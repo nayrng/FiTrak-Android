@@ -14,7 +14,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="8dp"
-        android:text="Welcome To FitTrak, Username!"
+        android:text="Welcome To FiTrak, Username!"
         android:textAlignment="center"
         android:textColor="#ffff"
         android:textSize="30sp"

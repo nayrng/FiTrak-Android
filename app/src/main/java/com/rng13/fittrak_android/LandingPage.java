@@ -68,7 +68,7 @@ public class LandingPage extends AppCompatActivity {
                     System.out.println("HERE YA GO " + uid);
                     if (user.getUid().equals(uid)) {
 //                        System.out.println(snapshot.child("EMAIL").getValue(String.class));
-                        welcome.setText("Welcome to FitTrak,\n" + snapshot.child("FIRST_NAME").getValue(String.class) + "!");
+                        welcome.setText("Welcome to FiTrak,\n" + snapshot.child("FIRST_NAME").getValue(String.class) + "!");
                         //USER_NAME = snapshot.child("USER_NAME").getValue(String.class);
                         USER_EMAIL = snapshot.child("EMAIL").getValue(String.class);
 
