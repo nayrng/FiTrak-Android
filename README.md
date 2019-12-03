@@ -18,7 +18,7 @@ https://github.com/btanhuec/FiTrak-Web
 
 ### Installation #2
 - Install the ```apk``` on your phone using the following link:
-https://drive.google.com/file/d/1v6I79ln1t_y0Hsf-cbxjilfGQRnBs_az/view?usp=sharing
+https://drive.google.com/file/d/1WR8tVTidCIvfwrSu_c8HIWDtdc1X38tZ/view?usp=sharing
 
 # WARNING
 - The app is optimized for use with phones the same size as the Google Pixel 3a and running Android 9 and up, there may be a less-than-desired experience when straying from these requirements.
