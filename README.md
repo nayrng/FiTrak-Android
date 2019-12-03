@@ -15,7 +15,7 @@ https://github.com/btanhuec/FiTrak-Web
 - Install Android Studio
 - Clone this repo, and open this project in Android Studio
 - Run the project with an Android Emulator that contains an Android 9 (API 28) image
--
+
 ### Installation #2
 - Install the ```apk``` on your phone using the following link:
 https://drive.google.com/file/d/1v6I79ln1t_y0Hsf-cbxjilfGQRnBs_az/view?usp=sharing
