@@ -1,6 +1,6 @@
-# FitTrak - Android
+# FiTrak - Android
 
-FitTrak is an application used for connecting users who wish to get fit and exercise with personal trainers.
+FiTrak is an application used for connecting users who wish to get fit and exercise with personal trainers.
 The Android application is meant to be used by the aforementioned users. Potential Trainers use the following web app:
 https://github.com/btanhuec/FiTrak-Web
 
