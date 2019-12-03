@@ -2,11 +2,11 @@ package com.rng13.fittrak_android;
 
 public class WORKOUT_OBJ {
 
-    String WORKOUT_TITLE;
-    String WORKOUT_TRAINER;
-    String WORKOUT_CLIENT;
-    String WORKOUT_DAY;
-    String WORKOUT_DETAILS;
+    public String WORKOUT_TITLE;
+    public String WORKOUT_TRAINER;
+    public String WORKOUT_CLIENT;
+    public String WORKOUT_DAY;
+    public String WORKOUT_DETAILS;
 
     public WORKOUT_OBJ(){};
 

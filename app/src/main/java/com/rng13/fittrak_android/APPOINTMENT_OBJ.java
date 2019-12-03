@@ -2,8 +2,8 @@ package com.rng13.fittrak_android;
 
 public class APPOINTMENT_OBJ {
 
-    String appt_date;
-    String appt_time;
+    public String appt_date;
+    public String appt_time;
 
     public APPOINTMENT_OBJ(){};
 

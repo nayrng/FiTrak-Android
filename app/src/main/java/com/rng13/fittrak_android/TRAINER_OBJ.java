@@ -6,15 +6,15 @@ import java.util.ArrayList;
 public class TRAINER_OBJ {
 
     // ------------------
-    String USERNAME;
+    public String USERNAME;
     // ------------------
-    String EMAIL;
-    String FIRST_NAME;
-    String LAST_NAME;
-    Long AGE;
-    Long EXPERIENCE;
-    String GENDER;
-    String ABOUT_ME;
+    public String EMAIL;
+    public String FIRST_NAME;
+    public String LAST_NAME;
+    public Long AGE;
+    public Long EXPERIENCE;
+    public String GENDER;
+    public String ABOUT_ME;
     ArrayList<String> CLIENTS;
 
     public TRAINER_OBJ(){};
