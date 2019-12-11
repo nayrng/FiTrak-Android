@@ -46,7 +46,6 @@ public class View_Workouts extends AppCompatActivity {
         TRAINER_NAME = getIntent().getStringExtra("trainer_uname");
 
         user = mAuth.getInstance().getCurrentUser();
-        //db = FirebaseDatabase.getInstance().getReference().child("TRAINERS").child(TRAINER_NAME).child("workouts");
         db = FirebaseDatabase.getInstance().getReference().child("WORKOUTS");
 
         mRecyclerView = findViewById(R.id.workouts_recycler);
@@ -55,35 +54,11 @@ public class View_Workouts extends AppCompatActivity {
 
         workout_list = new ArrayList<>();
 
-
-
-        System.out.println("USER IS " + USER_NAME);
-        System.out.println(TRAINER_NAME);
-
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 workout_list.clear();
                 for (DataSnapshot snap: dataSnapshot.getChildren()) {
-                    System.out.println("SNAP " + snap.getValue());
-                    System.out.println(TRAINER_NAME);
-
-//                    for (int i=0; i<snap.child("client_names").getChildrenCount(); i++) {
-//
-//                        System.out.println("PASSED USER IS " + USER_NAME.split("\\@")[0]);
-//                        System.out.println("READ USER IS " + snap.child("client_names").child(Integer.toString(i)));
-//
-//                        if (USER_NAME.split("\\@")[0].equals(snap.child("client_names").child(Integer.toString(i)).getValue(String.class))) {
-//                            System.out.println("YEET");
-//                            String workout_title = snap.child("name").getValue(String.class);
-//                            String workout_details = snap.child("description").getValue(String.class);
-//                            String workout_trainer = snap.child("username").getValue(String.class);
-//                            WORKOUT_OBJ obj = new WORKOUT_OBJ(workout_title, workout_details, workout_trainer);
-//                            workout_list.add(obj);
-//                        }
-//
-//
-//                    }
                     if (snap.child("username").getValue(String.class).equals(TRAINER_NAME)) {
                         String workout_title = snap.child("name").getValue(String.class);
                         String workout_details = snap.child("description").getValue(String.class);
@@ -93,11 +68,6 @@ public class View_Workouts extends AppCompatActivity {
                     }
 
                 }
-                for (int i=0; i<workout_list.size(); i++) {
-                    System.out.println(workout_list.isEmpty());
-                    System.out.println(workout_list.get(i).WORKOUT_TITLE);
-                }
-                System.out.println("WORKOUT LIST SIZE IS " + workout_list.size());
 
                 if (workout_list.isEmpty()) {
                     findViewById(R.id.no_workouts).setVisibility(View.VISIBLE);
@@ -121,11 +91,6 @@ public class View_Workouts extends AppCompatActivity {
 
 
             }
-
-            //                    trainer_client_list.add(0, client_name.split("\\@")[0]);
-            //                    update_clients(trainer_client_list, trainer.USERNAME, client_name.split("\\@")[0]);
-            //                }
-            //            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

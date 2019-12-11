@@ -74,11 +74,6 @@ public class View_Workout_Adapter extends RecyclerView.Adapter<View_Workout_Adap
         viewHolder.workout_title.setText(obj.WORKOUT_TITLE);
         viewHolder.workout_shortdesc.setId(i);
         viewHolder.workout_shortdesc.setText(obj.WORKOUT_DETAILS);
-//        viewHolder.workout_day.setId(i);
-//        viewHolder.workout_day.setText(obj.WORKOUT_DAY);
-//        viewHolder.workout_somedetails.setId(i);
-//        viewHolder.workout_somedetails.setText(obj.WORKOUT_DETAILS.substring(0, 10) + "...");
-//        viewHolder.more_info.setId(i);
     }
 
     @Override

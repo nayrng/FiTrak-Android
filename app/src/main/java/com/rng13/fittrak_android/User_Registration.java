@@ -51,9 +51,7 @@ public class User_Registration extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         reg_email = (EditText) findViewById(R.id.reg_email);
-        //EMAIL = reg_email.getText().toString();
         reg_password = (EditText) findViewById(R.id.reg_password);
-        //PASSWORD = reg_password.getText().toString();
         reg_fname = (EditText) findViewById(R.id.reg_first_name);
         reg_lname = (EditText) findViewById(R.id.reg_last_name);
 
@@ -90,26 +88,17 @@ public class User_Registration extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d("YEET", "createUserWithEmail:success");
+                            Log.d("createUserWithEmail", "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            System.out.println(user);
-//                            workouts.add(0, "placeholder");
-//                            appts.add(0, "placeholder");
-                            //CLIENT_OBJ client = new CLIENT_OBJ(USERNAME, mAuth.getUid(), EMAIL, F_NAME, L_NAME, "NO_TRAINER", workouts, appts);
-                            //CLIENT_OBJ client = new CLIENT_OBJ(mAuth.getUid(), EMAIL, F_NAME, L_NAME, "NO_TRAINER", workouts, appts);
                             CLIENT_OBJ client = new CLIENT_OBJ(mAuth.getUid(), EMAIL, F_NAME, L_NAME, "NO_TRAINER", INTERESTS);
-//                            CLIENT_OBJ client = new CLIENT_OBJ(mAuth.getUid(),
-//                                    EMAIL, F_NAME, L_NAME, "no trainer", workouts, appts);
                             create_db_entry(client);
                             Intent intent = new Intent(getApplicationContext(), LandingPage.class);
                             startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w("YEET", "createUserWithEmail:failure", task.getException());
+                            Log.w("createUserWithEmail", "createUserWithEmail:failure", task.getException());
                             Toast.makeText(getApplicationContext(), "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            System.out.println("FUCK");
                         }
                     }
                 });

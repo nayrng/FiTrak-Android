@@ -51,9 +51,6 @@ public class View_Trainers extends AppCompatActivity {
 
         USER_NAME = getIntent().getStringExtra("USER_NAME");
 
-        System.out.println("YEET " + USER_NAME);
-
-
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -64,7 +61,6 @@ public class View_Trainers extends AppCompatActivity {
                     String F_NAME = snap.child("first_name").getValue(String.class);
                     String L_NAME = snap.child("last_name").getValue(String.class);
                     Long AGE = (Long) snap.child("age").getValue();
-                    //int EXP = snap.child("experience").getValue(Integer.class);
                     Long EXP = (Long) snap.child("experience").getValue();
                     String GENDER = snap.child("gender").getValue(String.class);
                     String ABOUT_ME = snap.child("about_me").getValue(String.class);
@@ -81,8 +77,6 @@ public class View_Trainers extends AppCompatActivity {
                 ((View_Trainers_Adapter)mAdapter).setOnItemClickListener(new View_Trainers_Adapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
-                        // todo: trainer profiles
-                        System.out.println(trainer_list.get(position).USERNAME);
                         TRAINER_OBJ trainer = trainer_list.get(position);
                         Intent intent = new Intent(getApplicationContext(), Trainer_Details.class);
                         intent.putExtra("trainer_uname", trainer_list.get(position).USERNAME);
@@ -94,7 +88,6 @@ public class View_Trainers extends AppCompatActivity {
                         intent.putExtra("trainer_email", trainer.EMAIL);
                         intent.putExtra("trainer_about", trainer.ABOUT_ME);
                         intent.putExtra("USER_NAME", USER_NAME);
-                        //intent.putExtra("DO_I_HAVE_TRAINER", true);
                         startActivity(intent);
 
                     }

@@ -29,14 +29,12 @@ public class LandingPage extends AppCompatActivity {
     FirebaseUser user;
 
     TextView welcome;
-    CLIENT_OBJ client;
 
     Button view_appts;
     Button view_workouts;
     Button view_trainer_prof;
     Button view_available_trainers;
 
-    String USER_NAME;
 
     String USER_EMAIL;
 
@@ -65,17 +63,13 @@ public class LandingPage extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String uid = snapshot.child("USER_ID").getValue(String.class);
-                    System.out.println("HERE YA GO " + uid);
                     if (user.getUid().equals(uid)) {
-//                        System.out.println(snapshot.child("EMAIL").getValue(String.class));
                         welcome.setText("Welcome to FiTrak,\n" + snapshot.child("FIRST_NAME").getValue(String.class) + "!");
-                        //USER_NAME = snapshot.child("USER_NAME").getValue(String.class);
                         USER_EMAIL = snapshot.child("EMAIL").getValue(String.class);
 
                         trainer_uname = snapshot.child("TRAINER_USERNAME").getValue(String.class);
 
                         if ((snapshot.child("TRAINER_USERNAME").getValue(String.class)).equals("NO_TRAINER")) {
-                            System.out.println("FUCK YES");
                             view_trainer_prof.setVisibility(View.GONE);
                         } else {
                             view_available_trainers.setVisibility(View.GONE);
@@ -87,7 +81,7 @@ public class LandingPage extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w("FUCK", "loadPost:onCancelled", databaseError.toException());
+                Log.w("DatabaseError", "loadPost:onCancelled", databaseError.toException());
 
             }
         };
@@ -151,13 +145,8 @@ public class LandingPage extends AppCompatActivity {
                     }
                 });
 
-//                Intent intent = new Intent(getApplicationContext(), Trainer_Details.class);
-//                intent.putExtra("has_trainer", true);
-//                intent.putExtra("trainer_uname", trainer_uname);
-//                startActivity(intent);
             }
         });
-        //System.out.println(client.EMAIL);
 
 
 

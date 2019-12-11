@@ -32,17 +32,11 @@ public class Trainer_Details extends AppCompatActivity {
 
     String f_name;
     String l_name;
-    //int age;
     Long age;
-    //int exp;
     Long exp;
     String email;
     String about;
     String gender;
-
-    Boolean has_clients = false;
-
-    //Boolean has_trainer = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,22 +45,17 @@ public class Trainer_Details extends AppCompatActivity {
 
         Boolean has_trainer = getIntent().getBooleanExtra("DO_I_HAVE_TRAINER", false);
 
-        System.out.println("DO I HAVE A TRAINER? " + has_trainer);
-
         trainer_client_list = new ArrayList<>();
 
         db = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
 
         CLIENT_USER_NAME = getIntent().getStringExtra("USER_NAME");
-        System.out.println("PLEASE WORK " +CLIENT_USER_NAME);
         TRAINER_USER_NAME = getIntent().getStringExtra("trainer_uname");
 
         f_name = getIntent().getStringExtra("trainer_fname");
         l_name = getIntent().getStringExtra("trainer_lname");
-        //age = getIntent().getIntExtra("trainer_age", 0);
         age = getIntent().getLongExtra("trainer_age", 0);
-        //exp = getIntent().getIntExtra("trainer_exp", 0);
         exp = getIntent().getLongExtra("trainer_exp", 0);
         gender = getIntent().getStringExtra("trainer_gender");
         email = getIntent().getStringExtra("trainer_email");
@@ -108,11 +97,7 @@ public class Trainer_Details extends AppCompatActivity {
     }
 
     private void join_trainer(final TRAINER_OBJ trainer, final String client_name) {
-        System.out.println(trainer.USERNAME);
-        System.out.println("INSIDE JOIN TRAINER " + client_name);
         final DatabaseReference client_list_ref = db.child("TRAINERS").child(trainer.USERNAME);
-
-
 
         final ArrayList<String> trainer_client_list = new ArrayList<>();
 
